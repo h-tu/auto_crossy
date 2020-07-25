@@ -14,29 +14,29 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 * Here is a hand drawn image for coordinate reference:
 
-<img src="./demo/img4.JPG" width="500">
+  <img src="./demo/img4.JPG" width="500">
 
 #### Detailed steps: 
 
 1. The original screenshot taken of the game:
 
-<img src="./demo/1.jpg" width="500">
+  <img src="./demo/1.jpg" width="500">
 
 2. Grayscaling the image and zero padding the bottom to prepare for straightening the image:
 
-<img src="./demo/2.jpg" width="500">
+  <img src="./demo/2.jpg" width="500">
 
 3. ROI after getting rid of the irrelevant information in the image: 
 
-<img src="./demo/3.jpg" width="500">
+  <img src="./demo/3.jpg" width="500">
 
 4. Straighten the image to get rid of the black space: 
 
-<img src="./demo/4.jpg" width="500">
+    <img src="./demo/4.jpg" width="500">
 
 5. Resize the image to 50 x 50 before fedding into the model
 
-<img src="./demo/5.jpg" width="500">
+  <img src="./demo/5.jpg" width="500">
 
 ## Model training
 
