@@ -6,7 +6,17 @@ I'm training an AI to play "crossy road" the computer game with CNN.
 
 Inspired by sentdex's GTA V project (link at the bottom).
 
-## Get started
+## Table of Contents
+
+- [auto_crossy_road :hatching_chick:](#auto-crossy-road--hatching-chick-)
+  * [Getting started](#getting-started)
+    + [More about image processing part:](#more-about-image-processing-part-)
+      - [Detailed steps:](#detailed-steps-)
+  * [Model training](#model-training)
+  * [Running model](#running-model)
+  * [Links](#links)
+
+## Getting started
 
 As the name suggests, the code in grab_data takes care of the part where all the training datas are collected. The code's default running environment should be a working 'crossy road' app running on the top left corner, windowed, at 666 * 1280. The code will grab a snapshot about 10 times per second and processes it a little bit before saving each coresponding folder related to the action linked to the image, within the '/data' folder under the current working directory. This code also offers a functionality that allows you to clear all saved images under '/data', with all folders indicating motions untouched. 
 
