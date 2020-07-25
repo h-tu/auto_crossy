@@ -8,13 +8,12 @@ Inspired by sentdex's GTA V project (link at the bottom).
 
 ## Table of Contents
 
-- [auto_crossy_road :hatching_chick:](#auto-crossy-road--hatching-chick-)
-  * [Getting started](#getting-started)
-    + [More about image processing part:](#more-about-image-processing-part-)
-      - [Detailed steps:](#detailed-steps-)
-  * [Model training](#model-training)
-  * [Running model](#running-model)
-  * [Links](#links)
+* [Getting started](#getting-started)
+  + [More about image processing part:](#more-about-image-processing-part-)
+    - [Detailed steps:](#detailed-steps-)
+* [Model training](#model-training)
+* [Running model](#running-model)
+* [Links](#links)
 
 ## Getting started
 
