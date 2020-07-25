@@ -24,11 +24,11 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 2. Grayscaling the image and zero padding the bottom to prepare for straightening the image:
 
-  <img src="./demo/2.jpg" width="500">
+    <img src="./demo/2.jpg" width="500">
 
 3. ROI after getting rid of the irrelevant information in the image: 
 
-  <img src="./demo/3.jpg" width="500">
+    <img src="./demo/3.jpg" width="500">
 
 4. Straighten the image to get rid of the black space: 
 
@@ -36,7 +36,7 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 5. Resize the image to 50 x 50 before fedding into the model
 
-  <img src="./demo/5.jpg" width="500">
+    <img src="./demo/5.jpg" width="500">
 
 ## Model training
 
