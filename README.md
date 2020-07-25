@@ -36,7 +36,7 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 5. Resize the image to 50 x 50 before fedding into the model
 
-    <img src="./demo/5.jpg" width="500">
+    <img src="./demo/5.jpg" width="200">
 
 ## Model training
 
