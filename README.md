@@ -1,4 +1,4 @@
-# auto_crossy
+# auto_crossy_road :hatching_chick:
 
 I'm training an AI to play "crossy road" the computer game with CNN. 
 
@@ -34,7 +34,7 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
     <img src="./demo/4.jpg" width="500">
 
-5. Resize the image to 50 x 50 before fedding into the model
+5. Resize the image to 50 x 50 before being fed into the model
 
     <img src="./demo/5.jpg" width="200">
 
