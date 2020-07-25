@@ -14,7 +14,7 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 * Here is a hand drawn image for coordinate reference:
 
-<img src="./demo/img4.jpg" width="500">
+<img src="./demo/img4.JPG" width="500">
 
 #### Detailed steps: 
 
