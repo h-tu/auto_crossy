@@ -20,7 +20,7 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 1. The original screenshot taken of the game:
 
-  <img src="./demo/1.jpg" width="500">
+    <img src="./demo/1.jpg" width="500">
 
 2. Grayscaling the image and zero padding the bottom to prepare for straightening the image:
 
