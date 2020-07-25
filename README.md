@@ -1,4 +1,4 @@
-# auto_crossy_road :hatching_chick:
+# auto_crossy_road :rooster:
 
 I'm training an AI to play "crossy road" the computer game with CNN. 
 
