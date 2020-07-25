@@ -9,9 +9,7 @@ Inspired by sentdex's GTA V project (link at the bottom).
 ## Table of Contents
 
 * [Getting started](#getting-started)
-  + [More about image processing part:](#more-about-image-processing-part-)
-    - [Detailed steps:](#detailed-steps-)
-* [Model training](#model-training)
+* [Training model](#training-model)
 * [Running model](#running-model)
 * [Links](#links)
 
@@ -47,7 +45,7 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
     <img src="./demo/5.jpg" width="200">
 
-## Model training
+## Training model
 
 // Under construction
 
