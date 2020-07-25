@@ -11,6 +11,7 @@ Inspired by sentdex's GTA V project (link at the bottom).
 * [Getting started](#getting-started)
 * [Training model](#training-model)
 * [Running model](#running-model)
+* [Usage](#usage)
 * [Links](#links)
 
 ## Getting started
@@ -53,6 +54,9 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 // Under construction
 
+## Usage
+
+// Under construction
 
 ## Links
 
