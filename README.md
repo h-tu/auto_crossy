@@ -4,7 +4,7 @@ I'm training an AI to play "crossy road" the computer game with CNN.
 
 <img src="./demo/crossy.jpg" width="500">
 
-Inspired by sentdex's GTA V project(link at the bottom)
+Inspired by sentdex's GTA V project (link at the bottom).
 
 ## Get started
 
@@ -49,6 +49,5 @@ As the name suggests, the code in grab_data takes care of the part where all the
 
 ## Links
 
-[Crossy Road offical website](https://www.crossyroad.com/)
-
-[sentdex's gta project](https://github.com/Sentdex/pygta5)
+* [Crossy Road offical website](https://www.crossyroad.com/)
+* [sentdex's gta project](https://github.com/Sentdex/pygta5)
