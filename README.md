@@ -57,6 +57,7 @@ As the name suggests, the code in 'grab_data' takes care of the part where all t
 2. Grayscaling the image and zero padding the bottom to prepare for straightening the image:
     ```python
     processed_img = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
+    processed_img = np.pad(processed_img, ((0,144),(0,0)), 'constant')
     ```
 
    <img src="./demo/2.jpg" width="500">
