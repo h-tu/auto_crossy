@@ -117,7 +117,39 @@ The model is saved to the current directly with its name in the form of 'Datetim
 
 ## Running model
 
-// Under construction
+Similar to the first step, in the code 'pycrossy', screenshots of the game will be taken and processed to be straighten. To do the real-time prediction, we will load in the model we just saved in the previous step, and put it in the while loop so that it's always giving us an output. 
+
+Before passing the image into the model, it needs to be resize as well so that it has identical input dimension. 
+
+```python
+tmp = cv2.resize(new_screen, (50, 50))
+tmp = torch.Tensor(tmp)
+output = model((tmp.view(-1, 1, 50, 50)))
+    try:
+        prediction = ((output == 1).nonzero().numpy()[0][1])
+    except Exception as e:
+        prediction = 4
+        pass
+    # print(prediction)
+    
+move(prediction)
+```
+
+From the one hot vector that the model outputs, we can extract the index of '1' and revert out our desired action (for reference go back to one hot vector table and action table). I wrote a function to simulate keypresses, with a hold time of 0.1 seconds, so that the model is giving some time for the character to move.
+
+```python
+def move(opt):
+    if opt < 4:
+        opt = lst[opt]
+        hit_key(opt)
+
+def hit_key(key):
+    kb.press(key)
+    time.sleep(0.1)
+    kb.release(key)
+```
+
+That's it, now we have a self-walking chicken in 'crossy road'!
 
 ## Usage
 
