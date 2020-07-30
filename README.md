@@ -21,7 +21,7 @@ Inspired by sentdex's GTA V project (link at the bottom).
 When playing "crossy road", there are 5 possible actions that can be taken by our main character depending on the situation: 
 
 | Action        | Keyboard action           | Situation
------------------------------------------------------------------------------------------------------------------------------------
+| ------------- | ------------------------- | ---------------------------------------------------------------------------------------
 | move forward  | press 'w' on keyboard     | Open lane ahead, no risk of getting hit by car & has a safe landing space
 | move left     | press 'a' on keyboard     | Got blocked by obstacle or has a car coming from the right
 | move backward | press 's' on keyboard     | Got blcoked by obstacle or has a car coming from the left
