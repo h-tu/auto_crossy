@@ -23,6 +23,7 @@ Inspired by sentdex's GTA V project (link at the bottom).
   * [Usage](#usage)
     + [Full training experience](#full-training-experience)
     + [Just trying out the model](#just-trying-out-the-model)
+  * [More runtime footage](#more-runtime-footage)
   * [Links](#links)
 
 
@@ -118,7 +119,7 @@ On my last run where there are about 900 images in 'data/nop', I recovered nearl
 
 ### Balancing data
 
-// TODO
+From playing this game, it's no hard to tell that the actions we get will mostly be moving forward and stay ('w' & 'nop'). To make sure the model don't just keep blindly guessing for those two (and also I currently don't have a large enough data, hopefully I will have more time to work on this), I duplicated the images inside folder 'a', 'd' and 's', since they were about 1/20 the amount of the data size in 'w' and 'nop'. I bumped up 'w', 'a', 'd', 'nop' to each about 1000 images, and since we really baraely uses 's', I left it mainly untouched. To get the orignal data that has not been duplicated, go to this [directory](data/sifted_data_backup).
 
 ## Training model
 
@@ -197,6 +198,10 @@ Download all files in this directory, follow the descriptions above and you shou
 ### Just trying out the model
 
 Download the lastest model I have trained, with file extension being '.pt', and pycrossy. Load the model in 'pycrossy' and open up 'crossy road', place it on the top left corner of your computer with dimension 699 x 1280. You should be good to go. 
+
+## More running footage
+
+// TODO
 
 ## Links
 
