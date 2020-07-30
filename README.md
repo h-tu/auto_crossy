@@ -7,14 +7,20 @@ I'm training an AI to play "crossy road" the computer game with CNN.
 Inspired by sentdex's GTA V project (link at the bottom).
 
 ## Table of Contents
-
-* [Getting started](#getting-started)
-* [Collecting data](#collecting-data)
-* [Preparing data](#preparing-data)
-* [Training model](#training-model)
-* [Running model](#running-model)
-* [Usage](#usage)
-* [Links](#links)
+  * [Table of Contents](#table-of-contents)
+  * [Getting started](#getting-started)
+  * [Collecting data](#collecting-data)
+    + [Detailed steps](#detailed-steps-)
+    + [Dimension & coordinates](#dimension---coordinates)
+  * [Preparing data](#preparing-data)
+    + [Validating data](#validating-data)
+    + [Balancing data](#balancing-data)
+  * [Training model](#training-model)
+    + [Loading data](#loading-data)
+    + [Neural net design](#neural-net-design)
+  * [Running model](#running-model)
+  * [Usage](#usage)
+  * [Links](#links)
 
 ## Getting started
 
@@ -34,13 +40,7 @@ Therefore, the main idea of this project is to first get a lot of screenshots du
 
 As the name suggests, the code in 'grab_data' takes care of the part where all the training datas are collected. The code's default running environment should be a working 'crossy road' app running on the top left corner, windowed, at 699 * 1280. The code will grab a snapshot of resolution 666 * 1280 (-33 in x-axis to get rid of the title bar) about 10 times per second and processes it a little bit before saving each coresponding folder related to the action linked to the image, within the '/data' folder under the current working directory. This code also offers a functionality that allows you to clear all saved images under '/data', with all folders indicating motions untouched. 
 
-### More about image processing part:
-
-* Here is a hand drawn image for coordinate reference:
-
-  <img src="./demo/img4.JPG" width="500">
-
-#### Detailed steps: 
+### Detailed steps
 
 1. The original screenshot taken of the game:
     ```python
@@ -87,6 +87,13 @@ As the name suggests, the code in 'grab_data' takes care of the part where all t
     ```
     
     <img src="./demo/5.jpg" width="200">
+    
+
+### Dimension & coordinates
+
+* Here is a hand drawn image for coordinate reference:
+
+  <img src="./demo/img4.JPG" width="500">
 
 ## Preparing data
 
