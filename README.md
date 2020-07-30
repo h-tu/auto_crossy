@@ -7,14 +7,20 @@ I'm training an AI to play "crossy road" the computer game with CNN.
 Inspired by sentdex's GTA V project (link at the bottom).
 
 ## Table of Contents
-
-* [Getting started](#getting-started)
-* [Collecting data](#collecting-data)
-* [Preparing data](#preparing-data)
-* [Training model](#training-model)
-* [Running model](#running-model)
-* [Usage](#usage)
-* [Links](#links)
+  * [Table of Contents](#table-of-contents)
+  * [Getting started](#getting-started)
+  * [Collecting data](#collecting-data)
+    + [Detailed steps](#detailed-steps)
+    + [Dimension and coordinates](#dimension-and-coordinates)
+  * [Preparing data](#preparing-data)
+    + [Validating data](#validating-data)
+    + [Balancing data](#balancing-data)
+  * [Training model](#training-model)
+    + [Loading data](#loading-data)
+    + [Neural net design](#neural-net-design)
+  * [Running model](#running-model)
+  * [Usage](#usage)
+  * [Links](#links)
 
 ## Getting started
 
@@ -34,33 +40,60 @@ Therefore, the main idea of this project is to first get a lot of screenshots du
 
 As the name suggests, the code in 'grab_data' takes care of the part where all the training datas are collected. The code's default running environment should be a working 'crossy road' app running on the top left corner, windowed, at 699 * 1280. The code will grab a snapshot of resolution 666 * 1280 (-33 in x-axis to get rid of the title bar) about 10 times per second and processes it a little bit before saving each coresponding folder related to the action linked to the image, within the '/data' folder under the current working directory. This code also offers a functionality that allows you to clear all saved images under '/data', with all folders indicating motions untouched. 
 
-### More about image processing part:
-
-* Here is a hand drawn image for coordinate reference:
-
-  <img src="./demo/img4.JPG" width="500">
-
-#### Detailed steps: 
+### Detailed steps
 
 1. The original screenshot taken of the game:
-
-    <img src="./demo/1.jpg" width="500">
+    ```python
+    screen =  np.array(ImageGrab.grab(bbox=(0,33,1280,699)))
+    ```
+  
+   <img src="./demo/1.jpg" width="500">
 
 2. Grayscaling the image and zero padding the bottom to prepare for straightening the image:
+    ```python
+    processed_img = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
+    ```
 
-    <img src="./demo/2.jpg" width="500">
+   <img src="./demo/2.jpg" width="500">
 
 3. ROI after getting rid of the irrelevant information in the image: 
+    ```python
+    def roi(img, vertices):
+      mask = np.zeros_like(img)
+      cv2.fillPoly(mask, vertices, 255)
+      masked = cv2.bitwise_and(img, mask)
+      return masked
 
-    <img src="./demo/3.jpg" width="500">
+    vertices = np.array([[440,37],[158,597], [425,664], [1001,665], [1229,247]], np.int32)
+    processed_img = roi(processed_img, [vertices])
+    ```
+  
+   <img src="./demo/3.jpg" width="500">
 
 4. Straighten the image to get rid of the black space: 
-
+   ```python
+    pts_src = np.array([[440,37], [1229,247], [158,597],[947,807]])
+    pts_dst = np.array([[0,0],[817, 0],[0,627],[817, 627]])
+    im_dst = np.zeros((627, 817, 3), np.uint8)
+    h, status = cv2.findHomography(pts_src, pts_dst)
+    processed_img = cv2.warpPerspective(processed_img, h, (im_dst.shape[1],im_dst.shape[0]))
+    ```
+    
     <img src="./demo/4.jpg" width="500">
 
 5. Resize the image to 50 x 50 before being fed into the model
-
+    ```python
+    tmp = cv2.resize(new_screen, (50, 50))
+    ```
+    
     <img src="./demo/5.jpg" width="200">
+    
+
+### Dimension and coordinates
+
+* Here is a hand drawn image for coordinate reference:
+
+  <img src="./demo/img4.JPG" width="800">
 
 ## Preparing data
 
@@ -117,7 +150,39 @@ The model is saved to the current directly with its name in the form of 'Datetim
 
 ## Running model
 
-// Under construction
+Similar to the first step, in the code 'pycrossy', screenshots of the game will be taken and processed to be straighten. To do the real-time prediction, we will load in the model we just saved in the previous step, and put it in the while loop so that it's always giving us an output. 
+
+Before passing the image into the model, it needs to be resize as well so that it has identical input dimension, and then reshaped into a Tensor.
+
+```python
+tmp = cv2.resize(new_screen, (50, 50))
+tmp = torch.Tensor(tmp)
+output = model((tmp.view(-1, 1, 50, 50)))
+    try:
+        prediction = ((output == 1).nonzero().numpy()[0][1])
+    except Exception as e:
+        prediction = 4
+        pass
+    # print(prediction)
+    
+move(prediction)
+```
+
+From the one hot vector that the model outputs, we can extract the index of '1' and revert out our desired action (for reference go back to one hot vector table and action table). I wrote a function to simulate keypresses, with a hold time of 0.1 seconds, so that the model is giving some time for the character to move.
+
+```python
+def move(opt):
+    if opt < 4:
+        opt = lst[opt]
+        hit_key(opt)
+
+def hit_key(key):
+    kb.press(key)
+    time.sleep(0.1)
+    kb.release(key)
+```
+
+That's it, now we have a self-walking chicken in 'crossy road'!
 
 ## Usage
 
