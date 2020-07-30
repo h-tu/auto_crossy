@@ -43,23 +43,49 @@ As the name suggests, the code in 'grab_data' takes care of the part where all t
 #### Detailed steps: 
 
 1. The original screenshot taken of the game:
-
-    <img src="./demo/1.jpg" width="500">
+    ```python
+    screen =  np.array(ImageGrab.grab(bbox=(0,33,1280,699)))
+    ```
+  
+   <img src="./demo/1.jpg" width="500">
 
 2. Grayscaling the image and zero padding the bottom to prepare for straightening the image:
+    ```python
+    processed_img = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
+    ```
 
-    <img src="./demo/2.jpg" width="500">
+   <img src="./demo/2.jpg" width="500">
 
 3. ROI after getting rid of the irrelevant information in the image: 
+    ```python
+    def roi(img, vertices):
+      mask = np.zeros_like(img)
+      cv2.fillPoly(mask, vertices, 255)
+      masked = cv2.bitwise_and(img, mask)
+      return masked
 
-    <img src="./demo/3.jpg" width="500">
+    vertices = np.array([[440,37],[158,597], [425,664], [1001,665], [1229,247]], np.int32)
+    processed_img = roi(processed_img, [vertices])
+    ```
+  
+   <img src="./demo/3.jpg" width="500">
 
 4. Straighten the image to get rid of the black space: 
-
+   ```python
+    pts_src = np.array([[440,37], [1229,247], [158,597],[947,807]])
+    pts_dst = np.array([[0,0],[817, 0],[0,627],[817, 627]])
+    im_dst = np.zeros((627, 817, 3), np.uint8)
+    h, status = cv2.findHomography(pts_src, pts_dst)
+    processed_img = cv2.warpPerspective(processed_img, h, (im_dst.shape[1],im_dst.shape[0]))
+    ```
+    
     <img src="./demo/4.jpg" width="500">
 
 5. Resize the image to 50 x 50 before being fed into the model
-
+    ```python
+    tmp = cv2.resize(new_screen, (50, 50))
+    ```
+    
     <img src="./demo/5.jpg" width="200">
 
 ## Preparing data
@@ -119,7 +145,7 @@ The model is saved to the current directly with its name in the form of 'Datetim
 
 Similar to the first step, in the code 'pycrossy', screenshots of the game will be taken and processed to be straighten. To do the real-time prediction, we will load in the model we just saved in the previous step, and put it in the while loop so that it's always giving us an output. 
 
-Before passing the image into the model, it needs to be resize as well so that it has identical input dimension. 
+Before passing the image into the model, it needs to be resize as well so that it has identical input dimension, and then reshaped into a Tensor.
 
 ```python
 tmp = cv2.resize(new_screen, (50, 50))
