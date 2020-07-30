@@ -9,7 +9,6 @@ I'm training an AI to play "crossy road" the computer game with CNN.
 Inspired by sentdex's GTA V project (link at the bottom).
 
 ## Table of Contents
-  * [Table of Contents](#table-of-contents)
   * [Getting started](#getting-started)
   * [Collecting data](#collecting-data)
     + [Detailed steps](#detailed-steps)
@@ -22,7 +21,10 @@ Inspired by sentdex's GTA V project (link at the bottom).
     + [Neural net design](#neural-net-design)
   * [Running model](#running-model)
   * [Usage](#usage)
+    + [Full training experience](#full-training-experience)
+    + [Just trying out the model](#just-trying-out-the-model)
   * [Links](#links)
+
 
 ## Getting started
 
@@ -188,7 +190,13 @@ That's it, now we have a self-walking chicken in 'crossy road'!
 
 ## Usage
 
-// Under construction
+### Full training experience
+
+Download all files in this directory, follow the descriptions above and you should be able to create your own model.Load the model you got in 'pycrossy' and open up 'crossy road', place it on the top left corner of your computer with dimension 699 x 1280. You should be good to go. 
+
+### Just trying out the model
+
+Download the lastest model I have trained, with file extension being '.pt', and pycrossy. Load the model in 'pycrossy' and open up 'crossy road', place it on the top left corner of your computer with dimension 699 x 1280. You should be good to go. 
 
 ## Links
 
