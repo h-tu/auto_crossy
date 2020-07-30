@@ -2,7 +2,9 @@
 
 I'm training an AI to play "crossy road" the computer game with CNN. 
 
-<img src="./demo/crossy.jpg" width="500">
+![Gameplay](demo/showcase.gif)
+
+(Real self play footage)
 
 Inspired by sentdex's GTA V project (link at the bottom).
 
