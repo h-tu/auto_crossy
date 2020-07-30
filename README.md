@@ -89,11 +89,11 @@ As the name suggests, the code in 'grab_data' takes care of the part where all t
     <img src="./demo/5.jpg" width="200">
     
 
-### Dimension & coordinates
+### Dimension and coordinates
 
 * Here is a hand drawn image for coordinate reference:
 
-  <img src="./demo/img4.JPG" width="500">
+  <img src="./demo/img4.JPG" width="800">
 
 ## Preparing data
 
